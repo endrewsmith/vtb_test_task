@@ -1,0 +1,20 @@
+POST http://localhost:8099/buy
+Content-Type: application/json
+
+{ "price": "1000" }
+###
+POST http://localhost:8099/buy
+Content-Type: application/json
+
+{  }
+###
+DELETE http://localhost:8099/buy
+Content-Type: text/html
+
+{ "price": "1000test" }
+###
+POST http://localhost:8099/get-last-message-data
+Content-Type: application/json
+
+{ }
+###

@@ -1,0 +1,28 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "price": {
+      "type": "string"
+    },
+    "message_id": {
+      "type": "string"
+    },
+    "timestamp": {
+      "type": "string"
+    },
+    "method": {
+      "type": "string"
+    },
+    "uri": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "price",
+    "message_id",
+    "timestamp",
+    "method",
+    "uri"
+  ]
+}

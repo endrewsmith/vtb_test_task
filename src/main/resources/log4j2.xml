@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+    <Properties>
+        <Property name="LOG_PATTERN">%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n</Property>
+        <Property name="LOG_PATH">logs</Property>
+    </Properties>
+    <Appenders>
+        <!-- Console Appender для Docker (ОБЯЗАТЕЛЬНО) -->
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+        </Console>
+        <RollingFile name="RollingFile"
+                     fileName="${LOG_PATH}/app.log"
+                     filePattern="${LOG_PATH}/app.log.%i">
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+            <Policies>
+                <!-- Ротация при достижении 25MB -->
+                <SizeBasedTriggeringPolicy size="25 MB"/>
+            </Policies>
+            <!-- Хранить один архивынй файл-->
+            <DefaultRolloverStrategy max="1"/>
+        </RollingFile>
+    </Appenders>
+    <Loggers>
+        <!-- Логи только приложения - INFO -->
+        <Logger name="ru.vtb.testask" level="INFO" additivity="false">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="RollingFile"/>
+        </Logger>
+        <!-- Корневой логгер - INFO -->
+        <Root level="INFO">
+            <AppenderRef ref="Console"/>
+        </Root>
+    </Loggers>
+</Configuration>
